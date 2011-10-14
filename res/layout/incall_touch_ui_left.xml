@@ -20,23 +20,44 @@
      non-touch-sensitive parts of the in-call UI (i.e. the call card).
 
      The top-level View here is a FrameLayout with 2 children:
-       (1) incomingCallWidget: the UI displayed while an incoming call is ringing
+       (1) the UI displayed while an incoming call is ringing
+         (a) Sliding Tab Incoming Call Widget
+         (b) Rotary Selector Incoming Call Widget
+         (c) Ring Selector Incoming Call Widget
        (2) inCallControls: the widgets visible while a regular call (or calls) is in progress
      Exactly one of these is visible at any given moment.
      -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     >
 
-    <!-- (1) incomingCallWidget: the UI displayed while an incoming call is ringing. -->
+    <!-- (1a) Sliding Tab -->
     <com.android.internal.widget.SlidingTab
-        android:id="@+id/incomingCallWidget"
-        android:layout_width="fill_parent"
+        android:id="@+id/incomingSTCallWidget"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="80dip"
+        />
+
+    <!-- (1b) Rotary Selector -->
+    <com.android.internal.widget.RotarySelector
+        android:id="@+id/incomingRSCallWidget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        />
+
+    <!-- (1c) Ring Selector -->
+    <com.android.internal.widget.RingSelector
+        android:id="@+id/incomingRCallWidget"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
         />
 
     <!--

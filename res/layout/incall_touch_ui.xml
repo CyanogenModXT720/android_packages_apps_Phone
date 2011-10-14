@@ -21,6 +21,9 @@
 
      The top-level View here is a FrameLayout with 2 children:
        (1) incomingCallWidget: the UI displayed while an incoming call is ringing
+           (a) incomingSTCallWidget: Sliding Tab UI
+           (b) incomingRSCallWidget: Rotary Selector UI
+           (c) incomingRCallWidget: Ring Selector UI
        (2) inCallControls: the widgets visible while a regular call (or calls) is in progress
      Exactly one of these is visible at any given moment.
      -->
@@ -29,14 +32,32 @@
     android:layout_height="match_parent"
     >
 
-    <!-- (1) incomingCallWidget: the UI displayed while an incoming call is ringing. -->
+    <!-- (1a) incomingSTCallWidget: the UI displayed while an incoming call is ringing. -->
     <com.android.internal.widget.SlidingTab
-        android:id="@+id/incomingCallWidget"
+        android:id="@+id/incomingSTCallWidget"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="80dip"
+        />
+
+    <!-- (1b) incomingRSCallWidget: Rotary Selector UI -->
+    <com.android.internal.widget.RotarySelector
+        android:id="@+id/incomingRSCallWidget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        />
+
+    <!-- (1c) incomingRCallWidget: Ring Selector UI -->
+    <com.android.internal.widget.RingSelector
+        android:id="@+id/incomingRCallWidget"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
         />
 
     <!--
